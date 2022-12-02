@@ -1,0 +1,13 @@
+{
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.emcallback",
+      "description": "Event Mesh Callback Access",
+      "grant-as-authority-to-apps": [
+        "$XSSERVICENAME(eminst)"
+      ]
+    }
+  ],
+  "attributes": [],
+  "role-templates": []
+}

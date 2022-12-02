@@ -1,0 +1,1 @@
+GET http://localhost:4004/api/publish(topic='cf%2Fdev%2Fpoc%2Ftest%2Fhello',message='hello')
