@@ -1,5 +1,5 @@
 _schema-version: "3.1"
-ID: s4btp-glb-em-sample
+ID: s4btp-glb-em-sample-1
 version: 1.0.0
 description: A simple CAP project.
 parameters:
@@ -10,7 +10,7 @@ build-parameters:
       commands:
         - npx -p @sap/cds-dk cds build --production
 modules:
-  - name: s4btp-glb-em-sample-srv
+  - name: s4btp-glb-em-sample-1-srv
     type: nodejs
     path: gen/srv
     parameters:
@@ -22,9 +22,9 @@ modules:
         properties:
           srv-url: "${default-url}"
     requires:
-      - name: s4btp-glb-em-sample-auth
+      - name: s4btp-glb-em-sample-1-auth
       - name: eminst
-  - name: s4btp-glb-em-sample
+  - name: s4btp-glb-em-sample-1
     type: approuter.nodejs
     path: app/
     parameters:
@@ -38,16 +38,16 @@ modules:
           name: srv-api
           url: "~{srv-url}"
           forwardAuthToken: true
-      - name: s4btp-glb-em-sample-auth
+      - name: s4btp-glb-em-sample-1-auth
 resources:
-  - name: s4btp-glb-em-sample-auth
+  - name: s4btp-glb-em-sample-1-auth
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
       config:
-        xsappname: "s4btp-glb-em-sample-${org}-${space}"
+        xsappname: "s4btp-glb-em-sample-1-${org}-${space}"
         tenant-mode: dedicated
   - name: eminst
     type: org.cloudfoundry.existing-service

@@ -1,5 +1,5 @@
 {
-  "name": "s4btp-glb-em-sample",
+  "name": "s4btp-glb-em-sample-1",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
@@ -7,8 +7,9 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
-    "express": "^4",
+    "@sap/xb-msg-amqp-v100": "^0.9.58",
     "@sap/xssec": "^3",
+    "express": "^4",
     "passport": "^0"
   },
   "devDependencies": {
@@ -53,15 +54,12 @@
           "format": "cloudevents"
         },
         "[production]": {
-          "kind": "enterprise-messaging",
+          "kind": "enterprise-messaging-shared",
           "outbox": false,
-          "queue": {
-            "name": "cf/dev/poc/test",
-            "accessType": "NON_EXCLUSIVE"
+          "amqp": {
+            "incomingSessionWindow": 100
           },
-          "webhook": {
-            "waitingPeriod": 7000
-          }
+          "format": "cloudevents"
         }
       },
       "auth": {

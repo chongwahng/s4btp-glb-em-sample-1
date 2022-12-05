@@ -2,11 +2,6 @@ module.exports = async function (srv) {
     const cds = require('@sap/cds')
     const messaging = await cds.connect.to('messaging')
 
-    messaging.on('cf/dev/poc/test/hello', msg => {
-        console.log('Event Receiver - Handler Hook')
-        console.log(msg)
-    })
-
     messaging.on('*', async msg => { console.log(msg) })
 
     this.on('publish', async (req) => {
